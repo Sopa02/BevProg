@@ -1,40 +1,32 @@
-#include "../std_lib_facilities.h"
-//try this 1.
-void suspicious(vector<int>& v, int s)
+#include <vector>
+#include <iostream>
+#include <memory>
+
+std::vector<int> suspicious()
 {
-    int* p;
-    int* q;
-    try
-    {
-        p = new int[s];
-        vector<int>v1;
-        // . . .
-    }
-    catch(const std::exception& e)
-    {
-        delete[] p;
-        cout << e.what() << '\n';
-        throw;
-    }
-    try
-    {
-        q = new int[s];
-        vector<double> v2;
-        // . . .
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-        delete[] p;
-        delete[] q;
-    }
+	std::vector<int> p;
 
-    delete[] p;
-    delete[] q;
+	for(int i; std::cin >> i; )
+	{
+		if(i) p.push_back(i);
+		else throw std::exception();
+	}
 
+	return p; //Move
 }
 
-int main(){
+int main()
+try {
 
-    return 0;
+	auto p = suspicious();
+
+	for(int i = 0; i < p.size(); ++i)
+		std::cout << p.at(i) << ' ';
+	std::cout << '\n';
+
+	return 0;
+
+} catch (std::exception& e){
+	std::cerr << "Error!\n";
+	return 1;
 }
